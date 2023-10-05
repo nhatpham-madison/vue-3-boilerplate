@@ -17,6 +17,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@config': fileURLToPath(new URL('./src/config', import.meta.url)),
       '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
       '@pages': fileURLToPath(new URL('./src/pages', import.meta.url)),
       '@api': fileURLToPath(new URL('./src/api', import.meta.url)),
@@ -56,4 +57,5 @@ export default defineConfig({
       include: [fileURLToPath(new URL('./locales/**', import.meta.url)),],
     }),
   ],
+  envPrefix: 'APP',
 })
