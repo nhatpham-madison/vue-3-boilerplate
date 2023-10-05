@@ -1,10 +1,10 @@
 <script setup>
-
+const { t } = useI18n()
 </script>
 
 <template>
   <main>
-    HOME
+    {{ t('home.name') }}
   </main>
 </template>
 

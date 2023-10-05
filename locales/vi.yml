@@ -1,0 +1,10 @@
+button:
+  back: Trở lại
+  toggle_langs: Thay đổi ngôn ngữ
+  home: Trang chủ
+intro:
+  dynamic-route: Ví dụ dụDynamic Page
+  hi: Xin chào, {name}!
+not-found: Không tìm thấy
+home:
+  name: Trang chủ

@@ -8,6 +8,7 @@ import svgLoader from 'vite-svg-loader'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import VueDevTools from 'vite-plugin-vue-devtools'
+import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 
 // import WebfontDownload from 'vite-plugin-webfont-dl'
 
@@ -37,6 +38,7 @@ export default defineConfig({
       imports: [
         "vue",
         "vue-router",
+        'vue-i18n',
       ],
       dts: false,
       dirs: [
@@ -49,12 +51,9 @@ export default defineConfig({
       extensions: ['vue'],
       include: [/\.vue$/, /\.vue\?vue/],
     }),
-    // VueI18n({
-    //   runtimeOnly: true,
-    //   compositionOnly: true,
-    //   fullInstall: true,
-    //   include: [fileURLToPath(new URL('./locales/**', import.meta.url)),],
-    // }),
     VueDevTools(),
+    VueI18nPlugin({
+      include: [fileURLToPath(new URL('./locales/**', import.meta.url)),],
+    }),
   ],
 })

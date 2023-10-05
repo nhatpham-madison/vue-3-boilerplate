@@ -1,0 +1,10 @@
+button:
+  back: Back
+  toggle_langs: Change languages
+  home: Home
+intro:
+  dynamic-route: Demo of dynamic route
+  hi: Hi, {name}!
+not-found: Not found
+home:
+  name: Home
