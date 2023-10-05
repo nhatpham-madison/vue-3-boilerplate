@@ -4,6 +4,7 @@ const { t } = useI18n()
 
 <template>
   <main>
+    <router-link to="/users">Users</router-link>
     {{ t('home.name') }}
   </main>
 </template>

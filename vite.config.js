@@ -37,8 +37,8 @@ export default defineConfig({
     svgLoader(),
     AutoImport({
       imports: [
-        "vue",
-        "vue-router",
+        'vue',
+        'vue-router',
         'vue-i18n',
       ],
       dts: false,

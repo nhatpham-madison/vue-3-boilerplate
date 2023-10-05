@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { BASE_API_URL, REDIRECT_ON_LOGOUT, isProduction } from "@config";
+import { BASE_API_URL, REDIRECT_ON_LOGOUT } from "@config/app";
+import { isProduction } from "@config/env";
 import qs from 'qs'
 
 // axios.defaults.withCredentials = true;
@@ -18,7 +19,7 @@ request.interceptors.request.use(
      */
 
     request.headers = {
-      'X-Language': currentLanguage,
+      // 'X-Language': currentLanguage,
       'Content-Type': 'application/json',
       ...(accessToken ? { Authorization: accessToken } : {}),
       ...(request.headers || {}),
@@ -44,7 +45,7 @@ request.interceptors.response.use(
     }
 
     if (!isProduction) {
-      console.log('Request util Response: ', res);
+      console.log('httpRequest Response: ', res);
     }
 
     return res.data;
