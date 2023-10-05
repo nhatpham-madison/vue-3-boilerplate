@@ -7,32 +7,12 @@ import Layouts from 'vite-plugin-vue-layouts'
 import svgLoader from 'vite-svg-loader'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import VueDevTools from 'vite-plugin-vue-devtools'
+
+// import WebfontDownload from 'vite-plugin-webfont-dl'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    Pages(),
-    Layouts(),
-    svgLoader(),
-    Components(),
-    AutoImport({
-      include: [
-        /\.[j]s?$/, // .js
-        /\.vue$/,
-        /\.vue\?vue/, // .vue
-      ],
-      imports: [
-        "vue",
-        "vue-router",
-      ],
-      dts: false,
-      dirs: [
-        "./src/composables",
-        "./src/composables/**",
-      ],
-    }),
-  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -45,5 +25,36 @@ export default defineConfig({
       '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
       '@utils': fileURLToPath(new URL('./src/utils', import.meta.url)),
     }
-  }
+  },
+  plugins: [
+    vue(),
+    Pages({
+      extensions: ['vue'],
+    }),
+    Layouts(),
+    svgLoader(),
+    AutoImport({
+      imports: [
+        "vue",
+        "vue-router",
+      ],
+      dts: false,
+      dirs: [
+        'src/composables',
+        'src/stores',
+      ],
+      vueTemplate: true,
+    }),
+    Components({
+      extensions: ['vue'],
+      include: [/\.vue$/, /\.vue\?vue/],
+    }),
+    // VueI18n({
+    //   runtimeOnly: true,
+    //   compositionOnly: true,
+    //   fullInstall: true,
+    //   include: [fileURLToPath(new URL('./locales/**', import.meta.url)),],
+    // }),
+    VueDevTools(),
+  ],
 })
