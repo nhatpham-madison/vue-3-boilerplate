@@ -3,13 +3,12 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <main>
-    {{ t('home.name') }}
-  </main>
+  <div>
+    {{ t('not-found') }}
+  </div>
 </template>
 
 <route lang="yaml">
-name: home
 meta:
-  layout: default
+  layout: 404
 </route>
