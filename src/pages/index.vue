@@ -1,5 +1,6 @@
 <script setup>
 const { t } = useI18n()
+const {count} = useCounterStore()
 </script>
 
 <template>
