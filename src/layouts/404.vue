@@ -2,6 +2,6 @@
 </script>
 
 <template>
-  [Empty layout]
+  [404 layout]
   <router-view />
 </template>
