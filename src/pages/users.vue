@@ -2,6 +2,7 @@
 // import { usersResult } from '@api/user/user.query'
 
 // const { isLoading, isError, isFetching, data, error } = usersResult();
+const { signOut } = useAuth();
 </script>
 
 <template>
@@ -17,6 +18,8 @@
         <span>{{ user.name }}</span>
       </div>
     </div> -->
+
+    <button @click="signOut">Logout</button>
   </main>
 </template>
 

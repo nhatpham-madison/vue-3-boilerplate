@@ -1,18 +1,29 @@
 <script setup>
-import { useForm, useField } from 'vee-validate';
+import { useForm, useField } from 'vee-validate'
+import * as yup from "yup";
 
 const { t } = useI18n()
 const { isLoginLoading, isLoginError, loginError, signIn } = useAuth();
-const { errors: formError, handleSubmit } = useForm({
+
+const validationSchema = yup.object({
+  username: yup.string().required('Username is required'),
+  password: yup.string()
+    .required('Password is required')
+    .min(6, 'Password must be at least 6 characters'),
+});
+
+const { handleSubmit } = useForm({
+  validationSchema,
   initialValues: {
-    username: 'kminchelle',
-    password: '0lelplR',
+    username: '',
+    password: '',
   },
 })
-const { errorMessage: usernameErrorMsg, meta: usernameMeta, value:username } = useField('username');
-const { errorMessage: passwordErrorMsg, meta: passwordMeta, value:password } = useField('password');
 
-const onLogin = handleSubmit((values) => {
+const { errorMessage: usernameErrorMsg, meta: usernameMeta, value:username, handleBlur:usHandleBlur } = useField('username');
+const { errorMessage: passwordErrorMsg, meta: passwordMeta, value:password, handleBlur:pwHandleBlur } = useField('password');
+
+const onLogin = handleSubmit(async (values) => {
   signIn(values)
 })
 </script>
@@ -26,15 +37,21 @@ const onLogin = handleSubmit((values) => {
         <h2>Login Form</h2>
         <form @submit.prevent="onLogin">
           <label for="username">Username</label>
-          <input type="text" v-model="username" id="username" placeholder="Enter your username">
-          <span v-if="usernameErrorMsg && usernameMeta.touched">
+          <input type="text" @blur="usHandleBlur" v-model="username" id="username" placeholder="Enter your username">
+          <p v-if="usernameErrorMsg && usernameMeta.touched">
             {{ usernameErrorMsg }}
-          </span>
-          
+          </p>
+
           <label for="password">Password</label>
-          <input type="password" v-model="password" id="password" placeholder="Enter your password">
+          <input type="password" @blur="pwHandleBlur" v-model="password" id="password" placeholder="Enter your password">
+
+          <p v-if="passwordErrorMsg && passwordMeta.touched">
+            {{ passwordErrorMsg }}
+          </p>
 
           <button type="submit" :disabled="isLoginLoading">Login</button>
+
+          {{ loginError }}
         </form>
         
         <div class="switch">Back to
