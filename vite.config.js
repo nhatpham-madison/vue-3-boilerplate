@@ -40,6 +40,11 @@ export default defineConfig({
         'vue',
         'vue-router',
         'vue-i18n',
+        {
+          '@vueuse/core': [
+            'useStorage', 
+          ],
+        },
       ],
       dts: false,
       dirs: [
