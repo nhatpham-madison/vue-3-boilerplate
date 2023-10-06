@@ -2,21 +2,19 @@ import { useAuthStore } from '@stores/auth'
 import { storeToRefs } from 'pinia'
 import { userLoggedInQuery } from '@api/auth/auth.query'
 import { ACCESS_TOKEN_KEY, USER_INFO } from '@/utils/constants'
+import { UN_REQUIRES_AUTH_PAGE } from '@config/auth'
 
-const auth = async (from, to, next) => {
-  const { loggedIn } = useAuthStore();
-  const { userInfo } = storeToRefs(useAuthStore());
+const auth = async (to, from, next) => {
+  const { userInfo, loggedIn } = storeToRefs(useAuthStore());
+  const access_token = localStorage.getItem(ACCESS_TOKEN_KEY)
+  const userInfoLocal = JSON.parse(localStorage.getItem(USER_INFO) || '{}')
 
-  if (from.meta.requireAuth && !loggedIn.value) {
-    const access_token = localStorage.getItem(ACCESS_TOKEN_KEY);
-    const userInfoLocal = localStorage.getItem(USER_INFO);
-    
-    if (access_token && userInfoLocal) {
+  if (to.meta.requiresAuth && !loggedIn.value) {
+    if (access_token && userInfoLocal?.id) {
       try {
         const { data: user } = await userLoggedInQuery();
-
         if (user) {
-          userInfo.info = user
+          userInfo.value = user
 
           next();
         }
@@ -27,6 +25,8 @@ const auth = async (from, to, next) => {
     } else {
       next(`/login?redirect=${to.path}`);
     }
+  } else if (access_token && UN_REQUIRES_AUTH_PAGE.includes(to.path)) {
+    next('/');
   } else {
     next();
   }

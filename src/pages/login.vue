@@ -1,16 +1,20 @@
 <script setup>
+import { useForm, useField } from 'vee-validate';
+
 const { t } = useI18n()
-const username = ref('kminchelle')
-const password = ref('0lelplR')
-
 const { isLoginLoading, isLoginError, loginError, signIn } = useAuth();
+const { errors: formError, handleSubmit } = useForm({
+  initialValues: {
+    username: 'kminchelle',
+    password: '0lelplR',
+  },
+})
+const { errorMessage: usernameErrorMsg, meta: usernameMeta, value:username } = useField('username');
+const { errorMessage: passwordErrorMsg, meta: passwordMeta, value:password } = useField('password');
 
-const onLogin = () => {
-  signIn({
-    username: username.value,
-    password: password.value,
-  })
-}
+const onLogin = handleSubmit((values) => {
+  signIn(values)
+})
 </script>
 
 <template>
@@ -23,7 +27,10 @@ const onLogin = () => {
         <form @submit.prevent="onLogin">
           <label for="username">Username</label>
           <input type="text" v-model="username" id="username" placeholder="Enter your username">
-
+          <span v-if="usernameErrorMsg && usernameMeta.touched">
+            {{ usernameErrorMsg }}
+          </span>
+          
           <label for="password">Password</label>
           <input type="password" v-model="password" id="password" placeholder="Enter your password">
 
@@ -31,7 +38,7 @@ const onLogin = () => {
         </form>
         
         <div class="switch">Back to
-          <router-link to="/">Home</router-link>
+          <router-link to="/">{{ t('home.name') }}</router-link>
         </div>
       </div>
     </div>

@@ -24,5 +24,5 @@
 name: users
 meta:
   layout: default
-  requireAuth: true
+  requiresAuth: true
 </route>

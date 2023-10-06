@@ -1,5 +1,4 @@
 import { storeToRefs } from 'pinia'
-import { useStorage } from '@vueuse/core'
 import { loginMutation } from '@api/auth/auth.query'
 import { useAuthStore } from '@stores/auth'
 import { ACCESS_TOKEN_KEY, USER_INFO } from '@utils/constants'
@@ -20,6 +19,7 @@ const useAuth = () => {
 
     if (loginData?.value) {
       accessToken.value = loginData.value?.token
+      user.value = loginData?.value || ''
       userInfo.value = JSON.stringify(loginData?.value || {})
       router.push('/')
     }
@@ -27,6 +27,7 @@ const useAuth = () => {
 
   const signOut = () => {
     accessToken.value = null
+    user.value = ''
     userInfo.value = null
     router.push('/login')
   };
