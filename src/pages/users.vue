@@ -1,13 +1,13 @@
 <script setup>
-import { usersResult } from '@api/user/user.query'
+// import { usersResult } from '@api/user/user.query'
 
-const { isLoading, isError, isFetching, data, error } = usersResult();
+// const { isLoading, isError, isFetching, data, error } = usersResult();
 </script>
 
 <template>
   <main>
     <router-link to="/">Home</router-link>
-    <span v-if="isLoading">Loading...</span>
+    <!-- <span v-if="isLoading">Loading...</span>
     <span v-else-if="isError">Error: {{ error.message }}</span>
     <div v-else>
       <span v-if="isFetching">Refreshing...</span>
@@ -16,7 +16,7 @@ const { isLoading, isError, isFetching, data, error } = usersResult();
         <img :src="user.avatar_urls?.['96']" width="50" height="50" />
         <span>{{ user.name }}</span>
       </div>
-    </div>
+    </div> -->
   </main>
 </template>
 

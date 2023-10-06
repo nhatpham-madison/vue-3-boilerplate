@@ -22,7 +22,7 @@ export default defineConfig({
       '@pages': fileURLToPath(new URL('./src/pages', import.meta.url)),
       '@api': fileURLToPath(new URL('./src/api', import.meta.url)),
       '@composables': fileURLToPath(new URL('./src/composables', import.meta.url)),
-      '@store': fileURLToPath(new URL('./src/store', import.meta.url)),
+      '@stores': fileURLToPath(new URL('./src/stores', import.meta.url)),
       '@plugins': fileURLToPath(new URL('./src/plugins', import.meta.url)),
       '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
       '@utils': fileURLToPath(new URL('./src/utils', import.meta.url)),
@@ -58,4 +58,7 @@ export default defineConfig({
     }),
   ],
   envPrefix: 'APP',
+  server: {
+    port: 3005,
+  }
 })

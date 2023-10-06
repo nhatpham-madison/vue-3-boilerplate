@@ -2,6 +2,5 @@
 </script>
 
 <template>
-  [Empty layout]
   <router-view />
 </template>
