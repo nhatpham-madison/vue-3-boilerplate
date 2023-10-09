@@ -1,5 +1,5 @@
 <script setup>
-// import { usersResult } from '@api/user/user.query'
+// import { usersResult } from '@/api/user/user.query'
 
 // const { isLoading, isError, isFetching, data, error } = usersResult();
 const { signOut } = useAuth();

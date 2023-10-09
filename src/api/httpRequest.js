@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { BASE_API_URL, REDIRECT_ON_LOGOUT } from "@config/app";
-import { isProduction } from "@config/env";
+import { BASE_API_URL, REDIRECT_ON_LOGOUT } from "@/config/app";
+import { isProduction } from "@/config/env";
 import qs from 'qs'
 
 // axios.defaults.withCredentials = true;

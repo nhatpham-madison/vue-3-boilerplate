@@ -1,7 +1,7 @@
 import { storeToRefs } from 'pinia'
-import { loginMutation } from '@api/auth/auth.query'
-import { useAuthStore } from '@stores/auth'
-import { ACCESS_TOKEN_KEY, USER_INFO } from '@utils/constants'
+import { loginMutation } from '@/api/auth/auth.query'
+import { useAuthStore } from '@/stores/auth'
+import { ACCESS_TOKEN_KEY, USER_INFO } from '@/constants/auth'
 
 const useAuth = () => {
   const router = useRouter();

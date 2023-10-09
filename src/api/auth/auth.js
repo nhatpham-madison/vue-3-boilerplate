@@ -1,4 +1,4 @@
-import httpRequest from '@api/httpRequest'
+import httpRequest from '@/api/httpRequest'
 
 export const login = (payload) => {
   return httpRequest.post("/auth/login", payload);

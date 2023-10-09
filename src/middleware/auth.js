@@ -1,9 +1,8 @@
-import { useAuthStore } from '@stores/auth'
+import { useAuthStore } from '@/stores/auth'
 import { storeToRefs } from 'pinia'
-import { userLoggedInQuery } from '@api/auth/auth.query'
-import { ACCESS_TOKEN_KEY, USER_INFO } from '@/utils/constants'
-import { UN_REQUIRES_AUTH_PAGE } from '@config/auth'
-
+import { userLoggedInQuery } from '@/api/auth/auth.query'
+import { ACCESS_TOKEN_KEY, USER_INFO } from '@/constants/auth'
+import { UN_REQUIRES_AUTH_PAGE } from '@/config/auth'
 const auth = async (to, from, next) => {
   const { userInfo, loggedIn } = storeToRefs(useAuthStore());
   const access_token = localStorage.getItem(ACCESS_TOKEN_KEY)

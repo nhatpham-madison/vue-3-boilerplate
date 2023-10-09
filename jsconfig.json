@@ -3,15 +3,6 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@config/*": ["src/config/*"],
-      "@components/*": ["src/components/*"],
-      "@pages/*": ["src/pages/*"],
-      "@api/*": ["src/api/*"],
-      "@composables/*": ["src/composables/*"],
-      "@stores/*": ["src/stores/*"],
-      "@plugins/*": ["src/plugins/*"],
-      "@assets/*": ["src/assets/*"],
-      "@utils/*": ["src/utils/*"],
     },
   },
   "exclude": ["node_modules", "dist"]

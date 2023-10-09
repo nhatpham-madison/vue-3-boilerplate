@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { USER_INFO } from '@utils/constants'
+import { USER_INFO } from '@/constants/auth'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
