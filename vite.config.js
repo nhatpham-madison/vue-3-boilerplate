@@ -53,6 +53,13 @@ export default defineConfig({
       include: [fileURLToPath(new URL('./locales/**', import.meta.url)),],
     }),
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/assets/scss/_mixins.scss";`,
+      },
+    },
+  },
   envPrefix: 'APP',
   server: {
     port: 3005,

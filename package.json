@@ -33,6 +33,7 @@
     "i": "^0.3.7",
     "jsdom": "^22.1.0",
     "npm": "^10.2.0",
+    "sass": "^1.69.0",
     "start-server-and-test": "^2.0.0",
     "unplugin-auto-import": "^0.16.6",
     "unplugin-vue-components": "^0.25.2",
