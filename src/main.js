@@ -1,10 +1,7 @@
+import "@/assets/scss/main.scss";
 import { createApp } from 'vue'
-
 import App from './App.vue'
 import router from './router'
-
-// Main CSS
-import "@/assets/scss/main.scss";
 
 const app = createApp(App)
 
