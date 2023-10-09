@@ -4,12 +4,12 @@ import { isProduction } from "@/config/env";
 import qs from 'qs'
 
 // axios.defaults.withCredentials = true;
-const request = axios.create({
+const http = axios.create({
   baseURL: BASE_API_URL,
 });
 
 // Request interceptor
-request.interceptors.request.use(
+http.interceptors.request.use(
   (request) => {
     const accessToken = null
 
@@ -38,7 +38,7 @@ request.interceptors.request.use(
   },
 );
 
-request.interceptors.response.use(
+http.interceptors.response.use(
   (res) => {
     if (res.request.responseType === 'blob') {
       return res;
@@ -63,4 +63,4 @@ request.interceptors.response.use(
   },
 );
 
-export default request;
+export default http;

@@ -1,11 +1,11 @@
-import httpRequest from '@/api/httpRequest'
+import http from '@/api/http'
 
 export const login = (payload) => {
-  return httpRequest.post("/auth/login", payload);
+  return http.post("/auth/login", payload);
 };
 
 export const fetchUserLogged = (userId, params) => {
-  return httpRequest.get(`/users/${userId}`, {
+  return http.get(`/users/${userId}`, {
     params,
   });
 };

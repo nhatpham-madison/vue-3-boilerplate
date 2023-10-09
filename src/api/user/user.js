@@ -1,7 +1,7 @@
-import httpRequest from '@/api/httpRequest'
+import http from '@/api/http'
 
 export const fetchUsers = (params) => {
-  return httpRequest.get("/users", {
+  return http.get("/users", {
     params,
   });
 };
